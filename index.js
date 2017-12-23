@@ -1,16 +1,17 @@
 const through = require('through2');
 const encode = require('./lib/encode');
 
-module.exports = function (opts) {
+module.exports = opts => {
   function rebase(file, encoding, callback) {
-    encode.stylesheet(file, opts, (err, src) => {
+    const self = this;
+    encode(file, opts, (err, src) => {
       if (err) {
         console.error(err);
       }
 
       file.contents = Buffer.from(src);
 
-      this.push(file);
+      self.push(file);
       callback();
     });
   }
