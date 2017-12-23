@@ -1,24 +1,19 @@
-'use strict';
-var through = require('through2');
-var encode = require('./lib/encode');
+const through = require('through2');
+const encode = require('./lib/encode');
 
 module.exports = function (opts) {
+  function rebase(file, encoding, callback) {
+    encode.stylesheet(file, opts, (err, src) => {
+      if (err) {
+        console.error(err);
+      }
 
-    function rebase(file, encoding, callback) {
-        var self = this;
+      file.contents = Buffer.from(src);
 
-        encode.stylesheet(file, opts, function (err, src) {
-            if (err) {
-                console.error(err);
-            }
-            file.contents = new Buffer(src);
+      this.push(file);
+      callback();
+    });
+  }
 
-            self.push(file);
-            callback();
-        });
-
-    }
-
-    return through.obj(rebase);
+  return through.obj(rebase);
 };
-

@@ -1,7 +1,7 @@
 {
-  "name": "gulp-base64",
+  "name": "gulp-googlefonts-base64",
   "version": "0.1.3",
-  "description": "gulp task to encode images to data URI",
+  "description": "gulp task to encode google fonts to data URI",
   "main": "index.js",
   "homepage": "http://github.com/Wenqer/gulp-base64",
   "repository": "git://github.com/Wenqer/gulp-base64.git",
@@ -11,16 +11,22 @@
     "base64"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo"
   },
   "author": "Yaroslav 2gis",
   "license": "MIT",
   "dependencies": {
-    "through2": "~0.4.1",
-    "extend": "~1.2.1",
     "async": "~0.2.10",
+    "buffers": "~0.1.1",
+    "extend": "~1.2.1",
     "mime": "~1.2.11",
     "request": "~2.33.0",
-    "buffers": "~0.1.1"
+    "through2": "~0.4.1"
+  },
+  "devDependencies": {
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "space": 2
   }
 }
